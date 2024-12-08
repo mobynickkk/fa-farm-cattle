@@ -4,9 +4,9 @@ spring:
   logging:
     level: info
   datasource:
-    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5433/crop}
-    username: ${DATASOURCE_USER:crop_user}
-    password: ${DATASOURCE_PASSWORD:crop_password}
+    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5434/crop}
+    username: ${DATASOURCE_USER:cattle_user}
+    password: ${DATASOURCE_PASSWORD:cattle_password}
     driver-class-name: org.postgresql.Driver
   jpa:
     properties:
@@ -16,6 +16,6 @@ spring:
     change-log: classpath:data/changelog.yml
 
 app:
-  name: ${APP_NAME:antropov-farm-crop}
+  name: ${APP_NAME:antropov-farm-cattle}
   jwt:
     secret: ${JWT_SECRET:Yn2kjibddFAWtnPJ2AFlL8WXmohJMCvigQggaEypa5E=}

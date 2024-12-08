@@ -2,9 +2,9 @@ package ru.fa.service.domain;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.fa.io.dto.CropDto;
-import ru.fa.persistence.repository.CropRepository;
-import ru.fa.service.mapper.CropMapper;
+import ru.fa.io.dto.AnimalDto;
+import ru.fa.persistence.repository.AnimalRepository;
+import ru.fa.service.mapper.AnimalMapper;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -12,12 +12,12 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class CropService implements CrudService<CropDto> {
-    private final CropMapper cropMapper;
-    private final CropRepository cropRepository;
+public class AnimalService implements CrudService<AnimalDto> {
+    private final AnimalMapper cropMapper;
+    private final AnimalRepository cropRepository;
 
     @Override
-    public CropDto createOrUpdate(CropDto dto) {
+    public AnimalDto createOrUpdate(AnimalDto dto) {
         return Optional.of(dto)
                 .map(cropMapper::toEntity)
                 .map(cropRepository::save)
@@ -26,12 +26,12 @@ public class CropService implements CrudService<CropDto> {
     }
 
     @Override
-    public Collection<CropDto> getAll() {
+    public Collection<AnimalDto> getAll() {
         return cropMapper.toDto(cropRepository.findAll());
     }
 
     @Override
-    public CropDto getById(String id) {
+    public AnimalDto getById(String id) {
         return cropRepository.findById(UUID.fromString(id))
                 .map(cropMapper::toDto)
                 .orElseThrow();

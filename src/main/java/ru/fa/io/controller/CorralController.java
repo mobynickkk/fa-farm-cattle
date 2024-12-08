@@ -3,14 +3,14 @@ package ru.fa.io.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.fa.io.dto.CropDto;
+import ru.fa.io.dto.CorralDto;
 import ru.fa.service.domain.CrudService;
 
 @RestController
-@RequestMapping("/crop")
+@RequestMapping("/corral")
 @RequiredArgsConstructor
-public class CropController {
-    private final CrudService<CropDto> service;
+public class CorralController {
+    private final CrudService<CorralDto> service;
 
     @GetMapping("/")
     public ResponseEntity<?> getAll() {
@@ -31,7 +31,7 @@ public class CropController {
     }
 
     @PostMapping("/new")
-    public ResponseEntity<?> create(@RequestBody CropDto dto) {
+    public ResponseEntity<?> create(@RequestBody CorralDto dto) {
         try {
             return ResponseEntity.ok(service.createOrUpdate(dto));
         } catch (Exception e) {
@@ -40,7 +40,7 @@ public class CropController {
     }
 
     @PostMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable String id, @RequestBody CropDto dto) {
+    public ResponseEntity<?> update(@PathVariable String id, @RequestBody CorralDto dto) {
         try {
             return ResponseEntity.ok(service.createOrUpdate(dto.toBuilder().id(id).build()));
         } catch (Exception e) {

@@ -6,20 +6,15 @@ import lombok.Data;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
-/**
- * Посев
- */
 @Data
 @Entity
-@Table(name = "sowing")
-public class Sowing {
+@Table(name = "herd")
+public class Herd {
     @Id
     private UUID id;
     @ManyToOne(fetch = FetchType.EAGER)
-    private Field field;
+    private Animal animal;
     @ManyToOne(fetch = FetchType.EAGER)
-    private Crop crop;
-    private OffsetDateTime sowingDate;
-    @Embedded
-    private Amount amount;
+    private Corral corral;
+    private Integer amount;
 }

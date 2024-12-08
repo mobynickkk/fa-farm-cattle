@@ -7,13 +7,10 @@ import lombok.Data;
 
 import java.util.UUID;
 
-/**
- * Поле
- */
 @Data
 @Entity
-@Table(name = "field")
-public class Field {
+@Table(name = "corrals")
+public class Corral {
     @Id
     private UUID id;
     private String name;

@@ -1,7 +1,7 @@
 databaseChangeLog:
   - include:
-      file: classpath:data/sql/crop/changelog.crop.yml
+      file: classpath:data/sql/animal/changelog.animal.yml
   - include:
-      file: classpath:data/sql/field/changelog.field.yml
+      file: classpath:data/sql/corral/changelog.corral.yml
   - include:
-      file: classpath:data/sql/sowing/changelog.sowing.yml
+      file: classpath:data/sql/herd/changelog.herd.yml

@@ -7,13 +7,10 @@ import lombok.Data;
 
 import java.util.UUID;
 
-/**
- * Сельхоз культура
- */
 @Data
 @Entity
-@Table(name = "crop")
-public class Crop {
+@Table(name = "animals")
+public class Animal {
     @Id
     private UUID id;
     private String name;

@@ -3,14 +3,14 @@ package ru.fa.io.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.fa.io.dto.SowingDto;
+import ru.fa.io.dto.HerdDto;
 import ru.fa.service.domain.CrudService;
 
 @RestController
-@RequestMapping("/sowing")
+@RequestMapping("/herd")
 @RequiredArgsConstructor
-public class SowingController {
-    private final CrudService<SowingDto> service;
+public class HerdController {
+    private final CrudService<HerdDto> service;
 
     @GetMapping("/")
     public ResponseEntity<?> getAll() {
@@ -31,7 +31,7 @@ public class SowingController {
     }
 
     @PostMapping("/new")
-    public ResponseEntity<?> create(@RequestBody SowingDto dto) {
+    public ResponseEntity<?> create(@RequestBody HerdDto dto) {
         try {
             return ResponseEntity.ok(service.createOrUpdate(dto));
         } catch (Exception e) {
@@ -40,7 +40,7 @@ public class SowingController {
     }
 
     @PostMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable String id, @RequestBody SowingDto dto) {
+    public ResponseEntity<?> update(@PathVariable String id, @RequestBody HerdDto dto) {
         try {
             return ResponseEntity.ok(service.createOrUpdate(dto.toBuilder().id(id).build()));
         } catch (Exception e) {

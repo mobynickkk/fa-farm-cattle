@@ -1,13 +1,13 @@
 databaseChangeLog:
   - changeSet:
-      id: create_table_sowing
+      id: create_table_animal
       author: Nikita Antropov
       preConditions:
         - onFail: MARK_RAN
         - not:
             - tableExists:
-                tableName: sowing
+                tableName: crop
       changes:
         - sqlFile:
-            path: create_table_sowing.sql
+            path: create_table_animal.sql
             relativeToChangelogFile: true

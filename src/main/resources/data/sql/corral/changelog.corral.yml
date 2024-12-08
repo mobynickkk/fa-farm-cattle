@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: create_table_field
+      id: create_table_corral
       author: Nikita Antropov
       preConditions:
         - onFail: MARK_RAN
@@ -9,5 +9,5 @@ databaseChangeLog:
                 tableName: field
       changes:
         - sqlFile:
-            path: create_table_field.sql
+            path: create_table_corral.sql
             relativeToChangelogFile: true

@@ -2,9 +2,9 @@ package ru.fa.service.domain;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.fa.io.dto.FieldDto;
-import ru.fa.persistence.repository.FieldRepository;
-import ru.fa.service.mapper.FieldMapper;
+import ru.fa.io.dto.CorralDto;
+import ru.fa.persistence.repository.CorralRepository;
+import ru.fa.service.mapper.CorralMapper;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -12,11 +12,11 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class FieldService implements CrudService<FieldDto> {
-    private final FieldMapper fieldMapper;
-    private final FieldRepository fieldRepository;
+public class CorralService implements CrudService<CorralDto> {
+    private final CorralMapper fieldMapper;
+    private final CorralRepository fieldRepository;
 
-    public FieldDto createOrUpdate(FieldDto dto) {
+    public CorralDto createOrUpdate(CorralDto dto) {
         return Optional.of(dto)
                 .map(fieldMapper::toEntity)
                 .map(fieldRepository::save)
@@ -24,11 +24,11 @@ public class FieldService implements CrudService<FieldDto> {
                 .orElseThrow();
     }
 
-    public Collection<FieldDto> getAll() {
+    public Collection<CorralDto> getAll() {
         return fieldMapper.toDto(fieldRepository.findAll());
     }
 
-    public FieldDto getById(String id) {
+    public CorralDto getById(String id) {
         return fieldRepository.findById(UUID.fromString(id))
                 .map(fieldMapper::toDto)
                 .orElseThrow();
