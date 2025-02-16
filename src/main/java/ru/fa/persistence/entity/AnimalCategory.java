@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Data
 @Entity
-@Table(name = "animals")
+@Table(name = "animal")
 public class AnimalCategory {
     @Id
     private UUID id;

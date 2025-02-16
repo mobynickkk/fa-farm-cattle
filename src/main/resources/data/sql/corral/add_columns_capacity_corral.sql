@@ -1,3 +1,3 @@
-alter table field add column place varchar(255);
-alter table field add column acquisition_date timestamptz;
-alter table field add column capacity integer;
+alter table corral add column place varchar(255);
+alter table corral add column acquisition_date timestamptz;
+alter table corral add column capacity integer;

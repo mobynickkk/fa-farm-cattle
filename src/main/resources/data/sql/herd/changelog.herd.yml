@@ -18,3 +18,10 @@ databaseChangeLog:
         - sqlFile:
             path: add_column_name.sql
             relativeToChangelogFile: true
+  - changeSet:
+      id: alter_column_name
+      author: Nikita Antropov
+      changes:
+        - sqlFile:
+            path: alter_column_name.sql
+            relativeToChangelogFile: true

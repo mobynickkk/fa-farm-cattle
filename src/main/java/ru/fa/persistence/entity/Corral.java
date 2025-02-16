@@ -10,7 +10,7 @@ import java.util.UUID;
 
 @Data
 @Entity
-@Table(name = "corrals")
+@Table(name = "corral")
 public class Corral {
     @Id
     private UUID id;

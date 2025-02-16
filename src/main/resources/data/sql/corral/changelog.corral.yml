@@ -6,8 +6,15 @@ databaseChangeLog:
         - onFail: MARK_RAN
         - not:
             - tableExists:
-                tableName: field
+                tableName: corral
       changes:
         - sqlFile:
             path: create_table_corral.sql
+            relativeToChangelogFile: true
+  - changeSet:
+      id: add_columns_capacity_corral
+      author: Nikita Antropov
+      changes:
+        - sqlFile:
+            path: add_columns_capacity_corral.sql
             relativeToChangelogFile: true

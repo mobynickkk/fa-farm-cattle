@@ -3,6 +3,7 @@ package ru.fa.persistence.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Data
@@ -16,4 +17,5 @@ public class Animal {
     @ManyToOne(fetch = FetchType.EAGER)
     private Corral corral;
     private String name;
+    private OffsetDateTime birthDate;
 }

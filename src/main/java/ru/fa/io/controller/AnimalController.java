@@ -7,7 +7,7 @@ import ru.fa.io.dto.AnimalCategoryDto;
 import ru.fa.service.domain.CrudService;
 
 @RestController
-@RequestMapping("/animal")
+@RequestMapping("/animal-category")
 @RequiredArgsConstructor
 public class AnimalController {
     private final CrudService<AnimalCategoryDto> service;
