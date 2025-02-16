@@ -2,9 +2,9 @@ package ru.fa.persistence.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import ru.fa.persistence.entity.Herd;
+import ru.fa.persistence.entity.Animal;
 
 import java.util.UUID;
 
 @Repository
-public interface HerdRepository extends JpaRepository<Herd, UUID> { }
+public interface HerdRepository extends JpaRepository<Animal, UUID> { }

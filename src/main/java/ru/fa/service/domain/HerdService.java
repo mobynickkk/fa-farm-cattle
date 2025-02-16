@@ -2,7 +2,7 @@ package ru.fa.service.domain;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.fa.io.dto.HerdDto;
+import ru.fa.io.dto.AnimalDto;
 import ru.fa.persistence.repository.HerdRepository;
 import ru.fa.service.mapper.HerdMapper;
 
@@ -12,12 +12,12 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class HerdService implements CrudService<HerdDto> {
+public class HerdService implements CrudService<AnimalDto> {
     private final HerdMapper sowingMapper;
     private final HerdRepository sowingRepository;
 
     @Override
-    public HerdDto createOrUpdate(HerdDto dto) {
+    public AnimalDto createOrUpdate(AnimalDto dto) {
         return Optional.of(dto)
                 .map(sowingMapper::toEntity)
                 .map(sowingRepository::save)
@@ -26,12 +26,12 @@ public class HerdService implements CrudService<HerdDto> {
     }
 
     @Override
-    public Collection<HerdDto> getAll() {
+    public Collection<AnimalDto> getAll() {
         return sowingMapper.toDto(sowingRepository.findAll());
     }
 
     @Override
-    public HerdDto getById(String id) {
+    public AnimalDto getById(String id) {
         return sowingRepository.findById(UUID.fromString(id))
                 .map(sowingMapper::toDto)
                 .orElseThrow();

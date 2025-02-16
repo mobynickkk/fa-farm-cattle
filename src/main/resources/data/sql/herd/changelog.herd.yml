@@ -11,3 +11,10 @@ databaseChangeLog:
         - sqlFile:
             path: create_table_herd.sql
             relativeToChangelogFile: true
+  - changeSet:
+      id: add_column_name
+      author: Nikita Antropov
+      changes:
+        - sqlFile:
+            path: add_column_name.sql
+            relativeToChangelogFile: true

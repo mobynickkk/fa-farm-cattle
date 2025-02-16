@@ -4,7 +4,7 @@ spring:
   logging:
     level: info
   datasource:
-    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5434/crop}
+    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5434/cattle}
     username: ${DATASOURCE_USER:cattle_user}
     password: ${DATASOURCE_PASSWORD:cattle_password}
     driver-class-name: org.postgresql.Driver
@@ -14,8 +14,14 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
   liquibase:
     change-log: classpath:data/changelog.yml
+  docker:
+    compose:
+      enabled: false
 
 app:
   name: ${APP_NAME:antropov-farm-cattle}
   jwt:
     secret: ${JWT_SECRET:Yn2kjibddFAWtnPJ2AFlL8WXmohJMCvigQggaEypa5E=}
+
+server:
+  port: 8082

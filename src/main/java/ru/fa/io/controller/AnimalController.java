@@ -3,14 +3,14 @@ package ru.fa.io.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.fa.io.dto.AnimalDto;
+import ru.fa.io.dto.AnimalCategoryDto;
 import ru.fa.service.domain.CrudService;
 
 @RestController
 @RequestMapping("/animal")
 @RequiredArgsConstructor
 public class AnimalController {
-    private final CrudService<AnimalDto> service;
+    private final CrudService<AnimalCategoryDto> service;
 
     @GetMapping("/")
     public ResponseEntity<?> getAll() {
@@ -31,7 +31,7 @@ public class AnimalController {
     }
 
     @PostMapping("/new")
-    public ResponseEntity<?> create(@RequestBody AnimalDto dto) {
+    public ResponseEntity<?> create(@RequestBody AnimalCategoryDto dto) {
         try {
             return ResponseEntity.ok(service.createOrUpdate(dto));
         } catch (Exception e) {
@@ -40,7 +40,7 @@ public class AnimalController {
     }
 
     @PostMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable String id, @RequestBody AnimalDto dto) {
+    public ResponseEntity<?> update(@PathVariable String id, @RequestBody AnimalCategoryDto dto) {
         try {
             return ResponseEntity.ok(service.createOrUpdate(dto.toBuilder().id(id).build()));
         } catch (Exception e) {

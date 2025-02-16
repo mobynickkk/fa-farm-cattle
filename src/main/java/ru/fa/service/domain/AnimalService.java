@@ -2,7 +2,7 @@ package ru.fa.service.domain;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.fa.io.dto.AnimalDto;
+import ru.fa.io.dto.AnimalCategoryDto;
 import ru.fa.persistence.repository.AnimalRepository;
 import ru.fa.service.mapper.AnimalMapper;
 
@@ -12,12 +12,12 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class AnimalService implements CrudService<AnimalDto> {
+public class AnimalService implements CrudService<AnimalCategoryDto> {
     private final AnimalMapper cropMapper;
     private final AnimalRepository cropRepository;
 
     @Override
-    public AnimalDto createOrUpdate(AnimalDto dto) {
+    public AnimalCategoryDto createOrUpdate(AnimalCategoryDto dto) {
         return Optional.of(dto)
                 .map(cropMapper::toEntity)
                 .map(cropRepository::save)
@@ -26,12 +26,12 @@ public class AnimalService implements CrudService<AnimalDto> {
     }
 
     @Override
-    public Collection<AnimalDto> getAll() {
+    public Collection<AnimalCategoryDto> getAll() {
         return cropMapper.toDto(cropRepository.findAll());
     }
 
     @Override
-    public AnimalDto getById(String id) {
+    public AnimalCategoryDto getById(String id) {
         return cropRepository.findById(UUID.fromString(id))
                 .map(cropMapper::toDto)
                 .orElseThrow();

@@ -1,8 +1,8 @@
 package ru.fa.service.mapper;
 
 import org.mapstruct.Mapper;
-import ru.fa.io.dto.AnimalDto;
-import ru.fa.persistence.entity.Animal;
+import ru.fa.io.dto.AnimalCategoryDto;
+import ru.fa.persistence.entity.AnimalCategory;
 
 @Mapper(componentModel = "spring")
-public interface AnimalMapper extends EntityDtoMapper<Animal, AnimalDto> { }
+public interface AnimalMapper extends EntityDtoMapper<AnimalCategory, AnimalCategoryDto> { }

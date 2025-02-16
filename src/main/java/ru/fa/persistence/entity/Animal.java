@@ -1,17 +1,19 @@
 package ru.fa.persistence.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.UUID;
 
 @Data
 @Entity
-@Table(name = "animals")
+@Table(name = "herd")
 public class Animal {
     @Id
     private UUID id;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private AnimalCategory animalCategory;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Corral corral;
     private String name;
 }
