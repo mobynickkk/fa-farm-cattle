@@ -5,9 +5,9 @@ import java.util.Collection;
 public interface CrudService<T> {
     T createOrUpdate(T dto);
 
-    Collection<T> getAll();
+    Collection<T> getAll(String username);
 
-    T getById(String id);
+    T getById(String username, String id);
 
-    void deleteById(String id);
+    void slaughter(String username, String id);
 }

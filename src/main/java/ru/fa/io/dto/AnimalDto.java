@@ -9,6 +9,7 @@ import java.time.OffsetDateTime;
 public record AnimalDto(String id,
                         CorralDto corral,
                         AnimalCategoryDto animalCategory,
+                        String username,
                         String name,
                         @JsonFormat(pattern = "dd.MM.yyyy hh:mm")
                         OffsetDateTime birthDate) { }

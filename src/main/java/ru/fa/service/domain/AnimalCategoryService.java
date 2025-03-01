@@ -26,19 +26,19 @@ public class AnimalCategoryService implements CrudService<AnimalCategoryDto> {
     }
 
     @Override
-    public Collection<AnimalCategoryDto> getAll() {
+    public Collection<AnimalCategoryDto> getAll(String username) {
         return cropMapper.toDto(cropRepository.findAll());
     }
 
     @Override
-    public AnimalCategoryDto getById(String id) {
+    public AnimalCategoryDto getById(String username, String id) {
         return cropRepository.findById(UUID.fromString(id))
                 .map(cropMapper::toDto)
                 .orElseThrow();
     }
 
     @Override
-    public void deleteById(String id) {
+    public void slaughter(String username, String id) {
         cropRepository.deleteById(UUID.fromString(id));
     }
 }

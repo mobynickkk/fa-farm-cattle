@@ -15,7 +15,7 @@ public class AnimalController {
     @GetMapping("/")
     public ResponseEntity<?> getAll() {
         try {
-            return ResponseEntity.ok(service.getAll());
+            return ResponseEntity.ok(service.getAll(null));
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body(e.getMessage());
         }
@@ -24,7 +24,7 @@ public class AnimalController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getById(@PathVariable String id) {
         try {
-            return ResponseEntity.ok(service.getById(id));
+            return ResponseEntity.ok(service.getById(null, id));
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body(e.getMessage());
         }
@@ -51,7 +51,7 @@ public class AnimalController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteById(@PathVariable String id) {
         try {
-            service.deleteById(id);
+            service.slaughter(null, id);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body(e.getMessage());

@@ -17,6 +17,10 @@ spring:
   docker:
     compose:
       enabled: false
+  kafka:
+    bootstrap-servers: localhost:29092
+    consumer:
+      group-id: cattle
 
 app:
   name: ${APP_NAME:antropov-farm-cattle}

@@ -2,6 +2,7 @@ package ru.fa.io.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import ru.fa.io.dto.AnimalDto;
 import ru.fa.service.domain.CrudService;
@@ -15,7 +16,8 @@ public class HerdController {
     @GetMapping("/")
     public ResponseEntity<?> getAll() {
         try {
-            return ResponseEntity.ok(service.getAll());
+            var username = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            return ResponseEntity.ok(service.getAll(username));
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body(e.getMessage());
         }
@@ -24,7 +26,8 @@ public class HerdController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getById(@PathVariable String id) {
         try {
-            return ResponseEntity.ok(service.getById(id));
+            var username = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            return ResponseEntity.ok(service.getById(username, id));
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body(e.getMessage());
         }
@@ -33,7 +36,8 @@ public class HerdController {
     @PostMapping("/new")
     public ResponseEntity<?> create(@RequestBody AnimalDto dto) {
         try {
-            return ResponseEntity.ok(service.createOrUpdate(dto));
+            var username = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            return ResponseEntity.ok(service.createOrUpdate(dto.toBuilder().username(username).build()));
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body(e.getMessage());
         }
@@ -42,7 +46,8 @@ public class HerdController {
     @PostMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable String id, @RequestBody AnimalDto dto) {
         try {
-            return ResponseEntity.ok(service.createOrUpdate(dto.toBuilder().id(id).build()));
+            var username = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            return ResponseEntity.ok(service.createOrUpdate(dto.toBuilder().id(id).username(username).build()));
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body(e.getMessage());
         }
@@ -51,7 +56,8 @@ public class HerdController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteById(@PathVariable String id) {
         try {
-            service.deleteById(id);
+            var username = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            service.slaughter(username, id);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body(e.getMessage());

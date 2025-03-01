@@ -18,3 +18,10 @@ databaseChangeLog:
         - sqlFile:
             path: add_columns_capacity_corral.sql
             relativeToChangelogFile: true
+  - changeSet:
+      id: add_column_user
+      author: Nikita Antropov
+      changes:
+        - sqlFile:
+            path: add_column_user.sql
+            relativeToChangelogFile: true

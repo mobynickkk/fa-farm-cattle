@@ -7,6 +7,7 @@ import java.time.OffsetDateTime;
 
 @Builder(toBuilder = true)
 public record CorralDto(String id,
+                        String username,
                         String name,
                         String place,
                         @JsonFormat(pattern = "dd.MM.yyyy hh:mm")
